@@ -1,0 +1,43 @@
+.tic-tac-toe {
+    width: 600px;
+    height: 600px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+.tic-tac-toe button {
+    width: 200px;
+    height: 200px;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s;
+    font-size: 20px;
+}
+
+.tic-tac-toe button:hover {
+    background-color: #cecece;
+}
+
+.tic-tac-toe button:nth-child(1),
+.tic-tac-toe button:nth-child(2),
+.tic-tac-toe button:nth-child(3),
+.tic-tac-toe button:nth-child(4),
+.tic-tac-toe button:nth-child(5),
+.tic-tac-toe button:nth-child(6) {
+    border-bottom: 1px solid #666;
+}
+
+.tic-tac-toe button:nth-child(1),
+.tic-tac-toe button:nth-child(2),
+.tic-tac-toe button:nth-child(4),
+.tic-tac-toe button:nth-child(5),
+.tic-tac-toe button:nth-child(7),
+.tic-tac-toe button:nth-child(8) {
+    border-right: 1px solid #666;
+}
