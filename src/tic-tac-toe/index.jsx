@@ -1,48 +1,18 @@
-import { useState } from "react";
+import useTicTacToe from "./useTicTacToe";
 import "./style.css";
 
-const Palyers = {
-  A: 0,
-  B: 1,
-};
-
-const PlayerIcon = {
-  [Palyers.A]: "X",
-  [Palyers.B]: "O",
-};
-
-const DefoultRutn = {
-  [Palyers.A]: [],
-  [Palyers.B]: [],
-};
-
 const TicTacToe = () => {
-  const [activePalyer, setActivePalyer] = useState(Palyers.A);
-  const [palyerTurn, setPlayarTurn] = useState(structuredClone(DefoultRutn));
-
   const buttons = Array.from(new Array(9));
 
-  function handalTurn(index) {
-    return () => {
-      const newPlayr = activePalyer === Palyers.A ? Palyers.B : Palyers.A;
-
-      const palyerATruns = palyerTurn[Palyers.A];
-      const palyerBTruns = palyerTurn[Palyers.B];
-
-      if (palyerATruns.join("").includes(String(index))) {
-        return;
-      } else if (palyerBTruns.join("").includes(String(index))) {
-        return;
-      }
-
-      const oldPlayerTurns = structuredClone(palyerTurn);
-
-      oldPlayerTurns[activePalyer].push(String(index));
-      setPlayarTurn(oldPlayerTurns);
-
-      setActivePalyer(newPlayr);
-    };
-  }
+  const {
+    handalRestart,
+    handalTurn,
+    wonMessage,
+    palyerTurn,
+    activePalyer,
+    Palyers,
+    PlayerIcon,
+  } = useTicTacToe();
 
   return (
     <div className="tic-tac-toe">
@@ -61,10 +31,17 @@ const TicTacToe = () => {
 
         return (
           <button onClick={handalTurn(index)} key={index}>
-            {index}
+            {icon}
           </button>
         );
       })}
+
+      {wonMessage && (
+        <div className="message">
+          <h3>{wonMessage}</h3>
+          <button onClick={handalRestart}>Restart</button>
+        </div>
+      )}
     </div>
   );
 };
